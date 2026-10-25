@@ -17,7 +17,7 @@
         $review = $_POST['review'];
         $movie = $_POST['movie'];
 
-        $sql = "INSERT INTO ratings VALUES ('$username', '$rating', '$review', '$movie');";
+        $sql = "INSERT INTO reviews VALUES ('$username', '$rating', '$review', '$movie')";
 
         try {
            if ($conn->query($sql) === true) {
