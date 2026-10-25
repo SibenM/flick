@@ -12,10 +12,14 @@
 
         $conn = new mysqli( "localhost", "root", "", "flicks", 3307);
 
-        $sql = "SELECT * FROM users WHERE username='". $username . "' and password='" . $password . "'";
+        //$sql = "SELECT * FROM users WHERE username='". $username . "' and password='" . $password . "'";
+        $sql = "SELECT * FROM users WHERE username=? and password=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss", $username, $password);
 
         try {
-            $result = $conn->query($sql);
+            $stmt->execute();
+            $result = $stmt->get_result();
             if ( mysqli_num_rows($result) > 0 ) {
                 echo "<p> Hello " . $username . "<p>";
 
@@ -29,7 +33,7 @@
                 echo "<a href='addReviews.php'>Add Review</a>";
                 echo "<p>REVIEWS HERE</p>";
             } else {
-                echo "incorrect login. Go back.";
+                echo "Incorrect login. Go back.";
             } 
         } catch (mysqli_exception $e) {
             echo "ERROR!"; 
