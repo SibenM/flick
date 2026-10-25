@@ -16,7 +16,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
 </head>
 <body>
     <h1>Add a Review</h1>
-    <form action="submitReview.php" method="POST">
+    <form action="storeReviews.php" method="POST">
         <label for="movie">Choose a movie:</label>
         <select name="movie" id="movie">
             <option value="avatar">Avatar</option>

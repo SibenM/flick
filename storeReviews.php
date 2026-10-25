@@ -1,20 +1,39 @@
-<?php
-session_start();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+        session_start();
 
-if (empty($_SESSION['login'])) {
-    header("Location: index.php");
-    exit;
-}
+        if (empty($_SESSION['login'])) {
+            header("Location: index.php");
+            exit;
+        }
+        
+        $conn = new mysqli( "localhost", "root", "", "flicks", 3307);
 
-$conn = mysqli_connect('localhost', 'root', '', 'flicks');
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+        $username = $_COOKIE['username'];
+        $rating = $_POST['rating'];
+        $review = $_POST['review'];
+        $movie = $_POST['movie'];
 
-$conn = mysqli_connect("localhost", "root", "", "flicks");
-$stmt = $conn->prepare("INSERT INTO reviews (`username`, `review`) VALUES (?, ?)");
-$stmt->bind_param("ss", $_SESSION['username'], $_POST['review']);
-$stmt->execute();
-?>
+        $sql = "INSERT INTO reviews VALUES ('$username', '$rating', '$review', '$movie')";
 
-<p><a href="viewReviews.php">View your reviews!</a></p>
+        try {
+           if ($conn->query($sql) === true) {
+                echo "REVIEW ADDED!";
+           } else {
+                echo "ERROR WITH ADDING REVIEW";
+           }
+        } catch (mysqli_exception $e) {
+            echo "ERROR WITH ADDING REVIEW";
+        }
+    ?>
+
+    <a href="viewReviews.php">Back to view reviews</a>
+</body>
+</html>

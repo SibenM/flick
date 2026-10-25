@@ -7,10 +7,15 @@
 </head>
 <body>
     <?php
+        session_start();
+
+        if (empty($_SESSION['login'])) {
+            header("Location: index.php");
+            exit;
+        }
+
         
     ?>
-    
-    <br>
     <p>WE WILL SHOW REVIEWS HERE</p>
     <a href="addReviews.php">Add Review</a>
     <a href="logout.php">Logout</a>
