@@ -1,3 +1,24 @@
+<?php
+session_start();
+if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
+} else {
+    header("Location: index.php");
+    exit;
+}
+$conn = mysqli_connect("localhost", "root", "" , "flicks");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $review = $_POST["review"];
+    $username = $_SESSION['username'];
+    $stmt = $conn->prepare("INSERT INTO reviews (username, review) VALUES (?, ?)");
+    $stmt->bind_param("ss", $username, $review);
+    $stmt->execute();
+    $stmt->close();
+    mysqli_close($conn);
+
+    header ("Location: viewReviews.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
