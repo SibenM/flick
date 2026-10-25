@@ -11,7 +11,7 @@
         session_destroy();
 
         session_start();
-        // destroy last session for security TESTING
+        // destroy last session for security
     ?>
 <form action="viewReviews.php" method="POST">
     <p>Welcome To Flick!</p>
