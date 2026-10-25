@@ -7,17 +7,17 @@
 </head>
 <body>
     <h1>Add a Review</h1>
-    <form action="">
-        <label for="movies">Choose a movie:</label>
-        <select name="movies" id="movies">
+    <form action="submitReview.php" method="POST">
+        <label for="movie">Choose a movie:</label>
+        <select name="movie" id="movie">
             <option value="avatar">Avatar</option>
             <option value="sinners">Sinners</option>
             <option value="sausage-party">Sausage Party</option>
             <option value="tnp">The Nutty Professor</option>
         </select>
         <br><br>
-        <label for="ratings">Rate from 1-5:</label>
-        <select name="ratings" id="ratings">
+        <label for="rating">Rate from 1-5:</label>
+        <select name="rating" id="rating">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
