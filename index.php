@@ -13,7 +13,7 @@
         session_start();
         // destroy last session for security
     ?>
-<form action="viewReviews.php" method="POST">
+<form action="action.php" method="POST">
     <p>Welcome To Flick!</p>
 
     <p>Login:</p>
