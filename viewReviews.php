@@ -29,17 +29,23 @@
                 $username = $_POST['username'];
                 setcookie('username', $username);
                 
-
-                echo "<a href='addReviews.php'>Add Review</a>";
-                echo "<p>REVIEWS HERE</p>";
             } else {
                 echo "Incorrect login. Go back.";
             } 
-        } catch (mysqli_exception $e) {
-            echo "ERROR!"; 
-        } 
+        } catch (mysqli_sql_exception $e) {
+            echo "ERROR!";
+        }
+    ?>
+
+    <?php
+    $stmt->close();
+    mysqli_close($conn);
     ?>
     
+    <br>
+    <a href="addReviews.php">Add Review</a>
+    <a href="logout.php">Logout</a>
+    <br>
 </body>
 </html>
 
