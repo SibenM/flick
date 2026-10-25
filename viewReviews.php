@@ -9,18 +9,6 @@
     <h1>View Reviews</h1>
 
     <?php
-<<<<<<< HEAD
-        session_start();
-
-        if (empty($_SESSION['login'])) {
-            header("Location: index.php");
-            exit;
-        }
-
-        
-    ?>
-    <p>WE WILL SHOW REVIEWS HERE</p>
-=======
    session_start();
 if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
 } else {
@@ -52,7 +40,6 @@ if ($result->num_rows > 0) {
 ?>
     
     <br>
->>>>>>> b6938e468f33dd74c0a02303f9126af61800d30e
     <a href="addReviews.php">Add Review</a>
     <a href="logout.php">Logout</a>
     <br>
