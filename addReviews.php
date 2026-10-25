@@ -6,9 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Add a Review</h1>
     <form action="">
         <label for="movies">Choose a movie:</label>
-        <br><br>
         <select name="movies" id="movies">
             <option value="avatar">Avatar</option>
             <option value="sinners">Sinners</option>
@@ -26,7 +26,9 @@
         </select>
         <br><br>
         <label for="review">Write a short review:</label>
+        <br><br>
         <textarea name="review" id="review" rows="4" cols="50"></textarea>
+        <br><br>
         <input type="submit" value="Submit">
     </form>
 </body>
