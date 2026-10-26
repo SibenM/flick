@@ -14,7 +14,7 @@
         header("Location: index.php");
     exit;
     }
-    if($_SERVER["REQUEST METHOD"] === "POST") {
+    if($_SERVER["REQUEST_METHOD"] === "POST") {
         if(isset($_POST["csrf_token"]) && $_POST["csrf_token"] === $_SESSION["csrf_token"]) {
         } else {
             echo "Invalid CSRF token. Account deletion request denied.";
