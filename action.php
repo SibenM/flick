@@ -45,6 +45,7 @@
     <br>
     <a href="viewReviews.php">View Review</a>
     <a href="addReviews.php">Add Review</a>
+    <a href="deleteAccount.php">Delete Account</a>
     <a href="logout.php">Logout</a>
     <br>
 </body>

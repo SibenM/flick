@@ -9,12 +9,12 @@
     <h1>View Reviews</h1>
 
     <?php
-   session_start();
-if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
-} else {
-    header("Location: index.php");
+    session_start();
+    if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
+    }   else {
+        header("Location: index.php");
     exit;
-}
+    }
 
 $conn = mysqli_connect('localhost', 'root', '', 'flicks', 3307);
 if (!$conn) {
