@@ -20,14 +20,14 @@
         die("Connection failed.");
     }
 
-    $username = $_COOKIE['username'];
+    $username = $_SESSION['username'];
 
     $stmt = $conn->prepare("DELETE FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        setcookie('username', '');
+        setcookie('username', '', time() - 3600, '/');
         session_destroy();
         echo "Your account has been deleted. <a href='index.php'>Home</a>";
     } else {
