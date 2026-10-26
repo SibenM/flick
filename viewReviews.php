@@ -27,10 +27,10 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo "<p>Username: " . $row["username"] . "</p>";
-        echo "<p>Rating: " . $row["rating"] . "</p>";
-        echo "<p>Review: " . $row["review"] . "</p>";
-        echo "<p>Movie: " . $row["movie"] . "</p>";
+        echo "<p>Username: " . htmlspecialchars($row["username"]) . "</p>";
+        echo "<p>Rating: " . htmlspecialchars($row["rating"]) . "</p>";
+        echo "<p>Review: " . htmlspecialchars($row["review"]) . "</p>";
+        echo "<p>Movie: " . htmlspecialchars($row["movie"]) . "</p>";
         echo "<hr>";
     }
 } else {

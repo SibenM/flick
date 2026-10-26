@@ -16,21 +16,20 @@
         
         $conn = new mysqli( "localhost", "root", "", "flicks", 3307);
 
-        $username = $_COOKIE['username'];
+        $username = $_SESSION['username'];
         $rating = $_POST['rating'];
         $review = $_POST['review'];
         $movie = $_POST['movie'];
 
-        $sql = "INSERT INTO reviews VALUES ('$username', '$rating', '$review', '$movie')";
+        $sql = "INSERT INTO reviews (username, rating, review, movie) VALUES (?, ?, ?, ?)";
 
         try {
-           if ($conn->query($sql) === true) {
-                echo "REVIEW ADDED!";
-           } else {
-                echo "ERROR WITH ADDING REVIEW";
-           }
-        } catch (mysqli_exception $e) {
-            echo "ERROR WITH ADDING REVIEW";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $username, $rating, $review, $movie);
+        $stmt->execute();
+        echo "REVIEW ADDED!";
+        } catch (mysqli_sql_exception $e) {
+            echo "ERROR WITH ADDING REVIEW!" . $e->getMessage();
         }
     ?>
 
