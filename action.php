@@ -25,6 +25,7 @@
 
                 session_start();
                 $_SESSION['login']=true;
+                $_SESSION['username']=$username;
                 
                 $username = $_POST['username'];
                 setcookie('username', $username);
