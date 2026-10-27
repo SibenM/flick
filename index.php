@@ -1,7 +1,6 @@
 
 <?php
-    header_remove("X-Powered-By");
-    session_start();
+    require_once 'header.php';
     $_SESSION["csrf_token"] = bin2hex(random_bytes(32)); 
     ?>
     

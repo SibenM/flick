@@ -1,6 +1,5 @@
 <?php
-        header_remove("X-Powered-By");
-        session_start();
+        require_once 'header.php';
 
         if (empty($_SESSION['login'])) {
             header("Location: index.php");

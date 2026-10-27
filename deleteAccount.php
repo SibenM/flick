@@ -1,5 +1,6 @@
 <?php
     header_remove("X-Powered-By");
+    header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self';");
     session_start();
 
     if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {

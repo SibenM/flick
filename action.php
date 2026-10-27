@@ -1,5 +1,6 @@
 <?php
-        header_remove("X-Powered-By");
+        require_once 'header.php';
+               
         $username = $_POST['username'];
         $password = $_POST['password'];
 
@@ -16,7 +17,6 @@
             if ( mysqli_num_rows($result) > 0 ) {
                 echo "<p> Hello " . $username . "<p>";
 
-                session_start();
                 $_SESSION['login']=true;
                 $_SESSION['username']=$username;
                 

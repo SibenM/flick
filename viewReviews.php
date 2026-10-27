@@ -1,6 +1,7 @@
-    <?php
-    header_remove("X-Powered-By");
-    session_start();
+<?php
+    require_once 'header.php';
+
+    
     if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
     }   else {
         header("Location: index.php");
