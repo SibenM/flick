@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
+<?php
+        header_remove("X-Powered-By");
         session_start();
 
         if (empty($_SESSION['login'])) {
@@ -32,6 +25,16 @@
             echo "ERROR WITH ADDING REVIEW!" . $e->getMessage();
         }
     ?>
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
 
     <a href="viewReviews.php">Back to view reviews</a>
 </body>

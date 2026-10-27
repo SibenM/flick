@@ -1,3 +1,10 @@
+
+<?php
+    header_remove("X-Powered-By");
+    session_start();
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32)); 
+    ?>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +13,9 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-        session_start();
-        session_destroy();
 
-        session_start();
-        // destroy last session for security
-    ?>
 <form action="action.php" method="POST">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
     <p>Welcome To Flick!</p>
 
     <p>Login:</p>

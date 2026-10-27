@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>View Reviews</h1>
-
     <?php
+    header_remove("X-Powered-By");
     session_start();
     if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
     }   else {
@@ -38,6 +29,18 @@ if ($result->num_rows > 0) {
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>View Reviews</h1>
+
+
     
     <br>
     <a href="addReviews.php">Add Review</a>

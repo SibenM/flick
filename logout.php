@@ -1,5 +1,6 @@
 <?php
-session_start();
+    header_remove("X-Powered-By");
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -7,8 +8,8 @@ session_start();
 <body>
 
 <?php
-session_unset();
-session_destroy();
+    session_unset();
+    session_destroy();
 
 echo "You have been logged out. <a href='index.php'>Login again</a>";
 ?>  

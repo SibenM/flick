@@ -1,10 +1,11 @@
 <?php
-session_start();
-if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
-} else {
-    header("Location: index.php");
-    exit;
-}
+    header_remove("X-Powered-By");
+    session_start();
+    if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
+    } else {
+        header("Location: index.php");
+        exit;
+    }
 
 ?>
 <!DOCTYPE html>

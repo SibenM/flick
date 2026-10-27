@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
+<?php
+        header_remove("X-Powered-By");
         $username = $_POST['username'];
         $password = $_POST['password'];
 
@@ -43,9 +36,20 @@
     mysqli_close($conn);
     ?>
     
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
     <br>
     <a href="viewReviews.php">View Review</a>
     <a href="addReviews.php">Add Review</a>
+    <a href="fetchPoster.php">Fetch Poster via URL</a>
     <a href="deleteAccount.php">Delete Account</a>
     <a href="logout.php">Logout</a>
     <br>

