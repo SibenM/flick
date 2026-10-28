@@ -56,32 +56,3 @@
 </body>
 </html>
 
-<!--
-        // ' or '1=1
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $username, $password);
-
-        try {
-            $stmt->execute();
-            $result = $stmt->get_result();
-            if ( mysqli_num_rows($result) > 0 ) {
-                echo "Hello user! ";
-                session_start();
-                $_SESSION['login']=true;
-                
-                $username = $_POST['username'];
-
-                setcookie('username', $username);
-                
-
-                echo "Your username is " . $username;
-                echo "<a href='addReviews.php'>Add Review</a>";
-                echo "<p>REVIEWS HERE</p>";
-            } else {
-                echo "incorrect login. Go back.";
-            } 
-        } catch (mysqli_exception $e) {
-            echo "ERROR!"; 
-        } 
-    ?>
--->

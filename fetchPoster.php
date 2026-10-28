@@ -1,8 +1,5 @@
 <?php
-// fetchPoster.php
-header_remove("X-Powered-By");
-header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self';");
-session_start();
+    require_once 'header.php';
 
 if (isset($_POST['poster_url'])) {
     $url = $_POST['poster_url'];
