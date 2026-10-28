@@ -8,6 +8,27 @@
         header("Location: index.php");
     exit;
     }
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<form method="POST" action="">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+    <?php
+    $username = $_SESSION['username'];
+    echo "<p> Hello " . $username . "</p>";
+
     if($_SERVER["REQUEST_METHOD"] === "POST") {
         if(isset($_POST["csrf_token"]) && $_POST["csrf_token"] === $_SESSION["csrf_token"]) {
         } else {
@@ -18,8 +39,6 @@
     if ($conn->connect_error) {
         die("Connection failed.");
     }
-
-    $username = $_SESSION['username'];
 
     $stmt = $conn->prepare("DELETE FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
@@ -33,30 +52,15 @@
         echo "Error deleting account. <a href='index.php'>Home</a>";
     }
 
-$stmt->close();
-$conn->close();
+    $stmt->close();
+    $conn->close();
 
-    }else{
+    } else {
         if (empty($_SESSION['csrf_token'])) {
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         }
-    }
+    } 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-
-//confirmation form
-
-<form method="POST" action="">
-    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
     <p>Are you sure you want to delete your account?</p>
     <button type="submit">Yes, delete my account</button>
 </form>
