@@ -17,6 +17,9 @@
 
         try {
         $stmt = $conn->prepare($sql);
+        if ($stmt === false) {
+            die("Error preparing statement: " . $conn->error);
+        }
         $stmt->bind_param("ssss", $username, $rating, $review, $movie);
         $stmt->execute();
         echo "REVIEW ADDED!";

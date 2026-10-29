@@ -41,6 +41,9 @@
     }
 
     $stmt = $conn->prepare("DELETE FROM users WHERE username = ?");
+    if ($stmt === false) {
+            die("Error preparing statement: " . $conn->error);
+        }
     $stmt->bind_param("s", $username);
     $stmt->execute();
 
