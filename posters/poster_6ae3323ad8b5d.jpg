@@ -1,0 +1,26 @@
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<form action="action.php" method="POST">
+    <input type="hidden" name="csrf_token" value="51226eadcbce563cd839ddd2f95d1b19afa14f0986f03bc4eb5f6c49cad2c74e">
+    <p>Welcome To Flick!</p>
+
+    <p>Login:</p>
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+
+    <button type="submit">Login</button>
+</form>
+</body>
+</html>
