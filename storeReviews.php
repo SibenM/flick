@@ -17,8 +17,9 @@
 
         try {
         $stmt = $conn->prepare($sql);
+        error_log($conn->error);
         if ($stmt === false) {
-            die("Error preparing statement: " . $conn->error);
+            exit;
         }
         $stmt->bind_param("ssss", $username, $rating, $review, $movie);
         $stmt->execute();

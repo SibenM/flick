@@ -20,8 +20,9 @@
         //$sql = "SELECT * FROM users WHERE username='". $username . "' and password='" . $password . "'";
         $sql = "SELECT * FROM users WHERE username=? and password=?";
         $stmt = $conn->prepare($sql);
+        error_log($conn->error);
         if ($stmt === false) {
-            die("Error preparing statement: " . $conn->error);
+            exit;
         }
         $stmt->bind_param("ss", $username, $password);
 

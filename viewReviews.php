@@ -27,8 +27,9 @@ if (!$conn) {
 
 <?php
 $stmt = $conn->prepare("SELECT * FROM reviews");
+error_log($conn->error);
 if ($stmt === false) {
-            die("Error preparing statement: " . $conn->error);
+            exit;
         }
 $stmt->execute();
 $result = $stmt->get_result();

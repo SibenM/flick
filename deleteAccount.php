@@ -1,17 +1,11 @@
 <?php
-    header_remove("X-Powered-By");
-    header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self';");
-    session_start();
+    require_once 'header.php';
+    error_log($conn->error);
+    if ($stmt === false) {
+                exit;
+            }
 
-    if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
-    }   else {
-        header("Location: index.php");
-    exit;
-    }
-
-?>
-
-
+?>        
 
 <!DOCTYPE html>
 <html lang="en">
