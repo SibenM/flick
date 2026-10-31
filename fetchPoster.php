@@ -17,7 +17,7 @@ if (isset($_POST['poster_url'])) {
         exit;
     }
 
-    $parsed_url = parse_url($posterlink);
+    $parsed_url = parse_url((string)$posterlink);
     $scheme = strtolower($parsed_url['scheme'] ?? '');
     $host = strtolower($parsed_url['host'] ?? '');
 
@@ -33,11 +33,11 @@ if (isset($_POST['poster_url'])) {
     }
 
 
-    $content = @file_get_contents($posterlink);
-    echo "Successfully fetched content from: " . htmlspecialchars($posterlink) . "<br>";
+    $content = @file_get_contents((string)$posterlink);
+    echo "Successfully fetched content from: " . htmlspecialchars((string)$posterlink) . "<br>";
     
     if ($content === false) {
-        echo "Failed to fetch resource from: " . htmlspecialchars($posterlink);
+        echo "Failed to fetch resource from: " . htmlspecialchars(strval($posterlink));
     } else {
         $posterDir = __DIR__ . '/posters';
         if (!is_dir($posterDir)) {
@@ -48,7 +48,7 @@ if (isset($_POST['poster_url'])) {
         $filepath = $posterDir . '/' . $filename;
         file_put_contents($filepath, $content);
 
-        echo "Successfully fetched content from: " . htmlspecialchars($url) . "<br><br>";
+        echo "Successfully fetched content from: " . htmlspecialchars((string)$posterlink) . "<br><br>";
         echo "<h3>Fetched Poster:</h3>";
         echo '<img width="200" src="posters/' . htmlspecialchars($filename) . '" alt="Fetched poster">';
 

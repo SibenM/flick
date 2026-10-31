@@ -1,8 +1,9 @@
 <?php
         require_once 'header.php';
+        $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
                
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $username = $_POST['username'] ?? '';
+        $password = $_POST['password'] ?? '';
 
         $conn = new mysqli( "localhost", "root", "", "flicks", 3307);
 ?>
@@ -29,8 +30,17 @@
         try {
             $stmt->execute();
             $result = $stmt->get_result();
+            if ($result == false) {
+                exit;
+            }
             if ( mysqli_num_rows($result) > 0 ) {
-                echo "<p> Hello " . $username . "<p>";
+
+                session_regenerate_id(true);
+
+                $_SESSION['login']=true;
+                $_SESSION['username']=$username;
+
+                echo "<p> Hello " . htmlspecialchars((string)$username) . "</p>";
                 echo '<br>
                 <a href="addReviews.php">Add Review</a><br>
                 <a href="viewReviews.php">View Reviews</a><br>
@@ -39,8 +49,7 @@
                 <a href="logout.php">Logout</a>
                 <br>';
 
-                $_SESSION['login']=true;
-                $_SESSION['username']=$username;
+                
                 
 
                 $username = $_POST['username'];

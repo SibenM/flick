@@ -33,16 +33,20 @@ if ($stmt === false) {
         }
 $stmt->execute();
 $result = $stmt->get_result();
-
+if ($result === false) {
+                exit;
+            }
+            
 if ($result->num_rows > 0) {
+    
     while ($row = $result->fetch_assoc()) {
-        echo "<p>Username: " . htmlspecialchars($row["username"]) . "</p>";
-        echo "<p>Rating: " . htmlspecialchars($row["rating"]) . "</p>";
-        echo "<p>Review: " . htmlspecialchars($row["review"]) . "</p>";
-        echo "<p>Movie: " . htmlspecialchars($row["movie"]) . "</p>";
+        echo "<p>Username: " . htmlspecialchars((string)$row["username"]) . "</p>";
+        echo "<p>Rating: " . htmlspecialchars((string)$row["rating"]) . "</p>";
+        echo "<p>Review: " . htmlspecialchars((string)$row["review"]) . "</p>";
+        echo "<p>Movie: " . htmlspecialchars((string)$row["movie"]) . "</p>";
         echo "<hr>";
-    }
-} else {
+    } }
+ else {
     echo "<p>No reviews found.</p>";
 }
 
