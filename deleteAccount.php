@@ -34,9 +34,19 @@
     }
 
     $checkStmt = $conn->prepare("SELECT password FROM users WHERE username = ?");
+    if ($checkStmt === false) {
+        exit;
+    }
     $checkStmt->bind_param("s", $username);
     $checkStmt->execute();
-    $result = $checkStmt->get_result()->fetch_assoc();
+    $result = $checkStmt->get_result();
+
+    if ($result === false) {
+        echo "Database error.";
+        exit;
+    }
+
+    $result = $result->fetch_assoc();
 
     if (!$result || $result["password"] !== $password) {
     echo "Incorrect password. Account deletion denied.";
